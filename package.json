@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "gh-pages": "^6.3.0"
+  },
+  "homepage": "https://Songyosr.github.io/xbar",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  }
+}
