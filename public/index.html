@@ -19,12 +19,26 @@
         }
         
         :root {
-            --text-primary: #001524;
-            --bg-primary: #FFFFFF;
-            --accent-primary: #FF7D00;
-            --bg-secondary: #FFF7EB;
-            --brand-primary: #15616D;
-            --accent-secondary: #78290F;
+            /* Speakeasy Stats - Day Theme */
+            --text-primary: #2C1810;
+            --text-secondary: #5D4A3A;
+            --bg-primary: #FFF8E7;
+            --bg-secondary: #F5EFE7;
+            
+            --accent-amber: #D4A574;
+            --accent-navy: #1B2951;
+            --accent-gold: #B8860B;
+            
+            --hover-amber: #C19A66;
+            --active-navy: #243A6B;
+            
+            --border-light: #E8DDD4;
+            --shadow-soft: rgba(44, 24, 16, 0.08);
+            
+            /* Legacy mappings for compatibility */
+            --accent-primary: var(--accent-amber);
+            --brand-primary: var(--accent-navy);
+            --accent-secondary: var(--accent-gold);
         }
         
         body {
@@ -42,34 +56,38 @@
         
         header {
             background: var(--bg-secondary);
-            padding: 2rem 0;
-            border-bottom: 1px solid rgba(21, 97, 109, 0.1);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-light);
         }
         
         .hero {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
         }
         
         .hero p {
-            font-size: 1.125rem;
-            color: #6B7280;
-            max-width: 600px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
             margin: 0 auto;
+            line-height: 1.6;
         }
         
         .tagline {
-            font-size: 1rem;
-            color: var(--accent-primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         main {
@@ -84,17 +102,31 @@
         }
         
         .app-card {
-            background: white;
-            border-radius: 16px;
+            background: var(--bg-primary);
+            border-radius: 12px;
             padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease;
-            border: 1px solid rgba(21, 97, 109, 0.1);
+            box-shadow: 0 2px 8px var(--shadow-soft);
+            transition: all 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+            border: 1px solid var(--border-light);
+            position: relative;
+        }
+        
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            border-radius: 12px;
+            opacity: 0.3;
+            z-index: -1;
         }
         
         .app-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px var(--shadow-soft);
         }
         
         .app-card h3 {
@@ -105,9 +137,10 @@
         }
         
         .app-card p {
-            color: #6B7280;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
             font-size: 0.875rem;
+            line-height: 1.5;
         }
         
         .app-status {
@@ -120,33 +153,38 @@
         }
         
         .status-available {
-            background: #DEF7EC;
-            color: #047857;
+            background: rgba(212, 165, 116, 0.1);
+            color: var(--accent-navy);
+            border-left: 3px solid var(--accent-gold);
         }
         
         .status-coming-soon {
-            background: #FEF3C7;
-            color: #92400E;
+            background: rgba(184, 134, 11, 0.1);
+            color: var(--text-secondary);
+            border-left: 3px solid var(--accent-amber);
         }
         
         .app-link {
             display: inline-block;
-            background: var(--accent-primary);
-            color: white;
+            background: var(--accent-amber);
+            color: var(--text-primary);
             text-decoration: none;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
             font-weight: 600;
-            transition: background 0.2s ease;
+            transition: all 150ms ease;
+            box-shadow: 0 1px 3px var(--shadow-soft);
         }
         
         .app-link:hover {
-            background: #E66A00;
+            background: var(--hover-amber);
+            transform: scale(0.98);
         }
         
         .app-link:disabled,
         .app-link.disabled {
-            background: #9CA3AF;
+            background: var(--border-light);
+            color: var(--text-secondary);
             cursor: not-allowed;
             pointer-events: none;
         }
@@ -178,7 +216,7 @@
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: var(--brand-primary);
+            background: var(--accent-navy);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -186,6 +224,7 @@
             margin: 0 auto 1rem;
             font-size: 1.5rem;
             color: white;
+            box-shadow: 0 2px 8px var(--shadow-soft);
         }
         
         .feature h3 {
@@ -195,8 +234,9 @@
         }
         
         .feature p {
-            color: #6B7280;
+            color: var(--text-secondary);
             font-size: 0.875rem;
+            line-height: 1.5;
         }
         
         footer {
@@ -234,8 +274,8 @@
     <header>
         <div class="container">
             <div class="hero">
-                <div class="tagline">Not Your Average Bar - Standard Drinks, Standard Errors</div>
-                <h1>Stat Applet Lab</h1>
+                <div class="tagline">Stat Serves Cool - Average Drinks, Standard Errors</div>
+                <h1>xbar</h1>
                 <p>
                     A vibe-coded collection of interactive stats applets. Started as procrastination from R work, 
                     somehow became... educational? Perfect for students who learn better when things move around.
@@ -247,94 +287,94 @@
     <main>
         <div class="container">
             <section class="apps-section">
-                <h2 style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">Interactive Applets</h2>
+                <h2 style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">What's on Tap</h2>
                 
                 <div class="apps-grid">
                     <div class="app-card">
-                        <span class="app-status status-available">Available</span>
+                        <span class="app-status status-available">Now Serving</span>
                         <h3>Central Limit Theorem Lab</h3>
                         <p>
                             Explore how sample statistics behave as sample size changes. Visualize the magic of the CLT 
                             with interactive population distributions and animated sampling.
                         </p>
-                        <a href="apps/central-limit-theorem/" class="app-link">Launch Applet</a>
+                        <a href="apps/central-limit-theorem/" class="app-link">Order Now</a>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>Confidence Interval Builder</h3>
                         <p>
                             Build confidence intervals for means and proportions. Watch coverage animations and 
                             understand why 95% doesn't mean what you think it means.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>p-Value Explorer</h3>
                         <p>
                             Navigate the null distribution, visualize shaded tail areas, and understand 
                             Type I/II errors and statistical power.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>Effect Size Studio</h3>
                         <p>
                             Visualize Cohen's d, standardized mean differences, and distribution overlap. 
                             Learn when effect sizes matter more than p-values.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>Regression Sandbox</h3>
                         <p>
                             Manipulate slopes and intercepts in real-time. Explore residuals, leverage, 
                             and the influence of outliers on linear relationships.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>Bayes Intuition Board</h3>
                         <p>
                             Drag priors, see posteriors update in real-time. Explore diagnostic testing 
                             with PPV/NPV in medical contexts.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>Simulation Blocks</h3>
                         <p>
                             Bootstrap and permutation tests with animated resampling. Build confidence 
                             intervals from bootstrap percentiles.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
 
                     <div class="app-card">
-                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <span class="app-status status-coming-soon">On the Menu Soon</span>
                         <h3>Study Design & Power</h3>
                         <p>
                             Design studies with optimal sample sizes. Explore power curves for 
                             two-sample tests with unequal allocation.
                         </p>
-                        <span class="app-link disabled">Coming Soon</span>
+                        <span class="app-link disabled">Check Back Later</span>
                     </div>
                 </div>
             </section>
 
             <section class="features">
                 <div class="container">
-                    <h2>Why Stat Applet Lab?</h2>
+                    <h2>Why Choose xbar?</h2>
                     <div class="features-grid">
                         <div class="feature">
                             <div class="feature-icon">🎯</div>
@@ -379,7 +419,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Stat Applet Lab. Educational tools for statistical understanding.</p>
+            <p>&copy; 2024 xbar. Where statistical significance is served neat.</p>
             <p class="tech-stack">Built with React + TypeScript + TailwindCSS + shadcn/ui + Framer Motion + Recharts</p>
         </div>
     </footer>
