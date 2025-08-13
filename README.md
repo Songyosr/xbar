@@ -1,13 +1,13 @@
 # XBAR 🍸📊
 **Stat Serves Cool - Average Drinks, Standard Errors**
 
-> *"I mainly know R, but I got vibes and ChatGPT"* - The Dev
+> *"I mainly know R, but I got vibes and tryna do some side proj"* - The Bartender
 
 ## 🤷‍♂️ What Is This?
 
 A vibe-coded collection of interactive statistics applets. Started as a way to learn JavaScript while procrastinating on actual R work. Somehow it... kinda works?
 
-Perfect for:
+Perfect (hopefully?) for:
 - Students who learn better when things move
 - Anyone tired of static textbook plots  
 - People who think stats should be more fun
