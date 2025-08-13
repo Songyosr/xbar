@@ -1,10 +1,21 @@
 {
+  "name": "stat-applet-lab",
+  "version": "1.0.0",
+  "description": "A collection of interactive statistics education applets",
+  "homepage": "https://Songyosr.github.io/xbar",
+  "scripts": {
+    "dev": "cd xbar && npm start",
+    "build": "npm run build:xbar && npm run copy:public",
+    "build:xbar": "cd xbar && npm run build",
+    "copy:public": "cp -r public/* xbar/build/",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d xbar/build",
+    "serve": "cd public && python3 -m http.server 8000"
+  },
   "dependencies": {
     "gh-pages": "^6.3.0"
   },
-  "homepage": "https://Songyosr.github.io/xbar",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }

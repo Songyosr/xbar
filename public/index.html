@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stat Applet Lab - Interactive Statistics Education</title>
+    <meta name="description" content="A collection of animated, interactive web applets that teach core statistics concepts">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --text-primary: #001524;
+            --bg-primary: #FFFFFF;
+            --accent-primary: #FF7D00;
+            --bg-secondary: #FFF7EB;
+            --brand-primary: #15616D;
+            --accent-secondary: #78290F;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: var(--bg-secondary);
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(21, 97, 109, 0.1);
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.125rem;
+            color: #6B7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(21, 97, 109, 0.1);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .app-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .app-card p {
+            color: #6B7280;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .app-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .status-available {
+            background: #DEF7EC;
+            color: #047857;
+        }
+        
+        .status-coming-soon {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+        
+        .app-link {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+        
+        .app-link:hover {
+            background: #E66A00;
+        }
+        
+        .app-link:disabled,
+        .app-link.disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        
+        .features {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            margin: 3rem 0;
+            border-radius: 16px;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--brand-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .feature h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature p {
+            color: #6B7280;
+            font-size: 0.875rem;
+        }
+        
+        footer {
+            background: var(--text-primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-stack {
+            color: #9CA3AF;
+            font-size: 0.75rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <div class="tagline">Not Your Average Bar - Standard Drinks, Standard Errors</div>
+                <h1>Stat Applet Lab</h1>
+                <p>
+                    A cohesive collection of animated, interactive web applets that teach core statistics concepts. 
+                    Perfect for medical, public health, and undergraduate students.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="apps-section">
+                <h2 style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">Interactive Applets</h2>
+                
+                <div class="apps-grid">
+                    <div class="app-card">
+                        <span class="app-status status-available">Available</span>
+                        <h3>Central Limit Theorem Lab</h3>
+                        <p>
+                            Explore how sample statistics behave as sample size changes. Visualize the magic of the CLT 
+                            with interactive population distributions and animated sampling.
+                        </p>
+                        <a href="apps/central-limit-theorem/" class="app-link">Launch Applet</a>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>Confidence Interval Builder</h3>
+                        <p>
+                            Build confidence intervals for means and proportions. Watch coverage animations and 
+                            understand why 95% doesn't mean what you think it means.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>p-Value Explorer</h3>
+                        <p>
+                            Navigate the null distribution, visualize shaded tail areas, and understand 
+                            Type I/II errors and statistical power.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>Effect Size Studio</h3>
+                        <p>
+                            Visualize Cohen's d, standardized mean differences, and distribution overlap. 
+                            Learn when effect sizes matter more than p-values.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>Regression Sandbox</h3>
+                        <p>
+                            Manipulate slopes and intercepts in real-time. Explore residuals, leverage, 
+                            and the influence of outliers on linear relationships.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>Bayes Intuition Board</h3>
+                        <p>
+                            Drag priors, see posteriors update in real-time. Explore diagnostic testing 
+                            with PPV/NPV in medical contexts.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>Simulation Blocks</h3>
+                        <p>
+                            Bootstrap and permutation tests with animated resampling. Build confidence 
+                            intervals from bootstrap percentiles.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+
+                    <div class="app-card">
+                        <span class="app-status status-coming-soon">Coming Soon</span>
+                        <h3>Study Design & Power</h3>
+                        <p>
+                            Design studies with optimal sample sizes. Explore power curves for 
+                            two-sample tests with unequal allocation.
+                        </p>
+                        <span class="app-link disabled">Coming Soon</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+                    <h2>Why Stat Applet Lab?</h2>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Pedagogically Focused</h3>
+                            <p>Every animation and interaction is designed to illuminate a specific statistical concept, not just entertain.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Lightweight & Fast</h3>
+                            <p>Built with performance in mind. Smooth animations and responsive interactions on any device.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">🔧</div>
+                            <h3>Embeddable</h3>
+                            <p>Drop directly into slides, Bookdown chapters, or LMS platforms. No side-chat or assessment UI to distract.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">🎨</div>
+                            <h3>Unified Design</h3>
+                            <p>Consistent color palette, typography, and interaction patterns across all applets for seamless learning.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">♿</div>
+                            <h3>Accessible</h3>
+                            <p>Keyboard navigation, screen reader support, and color-blind friendly design following WCAG guidelines.</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">🔬</div>
+                            <h3>Scientifically Accurate</h3>
+                            <p>Numerically stable algorithms and deterministic random number generation for reproducible results.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Stat Applet Lab. Educational tools for statistical understanding.</p>
+            <p class="tech-stack">Built with React + TypeScript + TailwindCSS + shadcn/ui + Framer Motion + Recharts</p>
+        </div>
+    </footer>
+</body>
+</html>
