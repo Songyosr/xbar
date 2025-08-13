@@ -1,119 +1,135 @@
-# Stat Applet Lab
+# XBAR 🍸📊
+**Stat Serves Cool - Average Drinks, Standard Errors**
 
-**Not Your Average Bar - Standard Drinks, Standard Errors**
+> *"I mainly know R, but I got vibes and ChatGPT"* - The Dev
 
-A cohesive collection of animated, interactive web applets that teach core statistics concepts. Perfect for medical, public health, and undergraduate students.
+## 🤷‍♂️ What Is This?
 
-## 🎯 Features
+A vibe-coded collection of interactive statistics applets. Started as a way to learn JavaScript while procrastinating on actual R work. Somehow it... kinda works?
 
-- **Pedagogically Focused**: Every animation designed to illuminate statistical concepts
-- **Lightweight & Fast**: Smooth performance on any device  
-- **Embeddable**: Drop into slides, Bookdown, or LMS platforms
-- **Unified Design**: Consistent experience across all applets
-- **Accessible**: WCAG compliant with keyboard navigation
-- **Scientifically Accurate**: Numerically stable algorithms
+Perfect for:
+- Students who learn better when things move
+- Anyone tired of static textbook plots  
+- People who think stats should be more fun
+- Me, trying to understand JavaScript 😅
 
-## 🧮 Available Applets
+## 🧮 What Actually Works
 
 ### ✅ Central Limit Theorem Lab
-Explore how sample statistics behave as sample size changes. Interactive population distributions with animated sampling.
+*Status: Surprisingly functional!*
 
-**Enhanced Features:**
-- 🎯 Smart line positioning with particle masking
-- 📱 Fully responsive design with mobile gestures  
-- 🎨 Enhanced visual feedback with stable labels
-- ⚡ Smooth animations showing parameter vs sample statistics
+Animated particles falling from population to samples. Has lines that don't wiggle anymore (took way too long to fix). Mobile-friendly because accidentally learned about CSS media queries.
 
-**Location**: `/public/apps/central-limit-theorem/`
+**Location**: https://Songyosr.github.io/xbar/apps/central-limit-theorem/
 
-### 🚧 Coming Soon
-- Confidence Interval Builder
-- p-Value Explorer  
-- Effect Size Studio
-- Regression Sandbox
-- Bayes Intuition Board
-- Simulation Blocks
-- Study Design & Power
+**Features that somehow work:**
+- 🎯 Lines that avoid particles (fancy!)
+- 📱 Swipe to close panels on mobile  
+- 🎨 Labels that stay put (finally!)
+- ⚡ Smooth animations (thanks Claude!)
 
-## 🚀 Quick Start
+### 🚧 Maybe Someday
+- Confidence Intervals (if I figure out more JavaScript)
+- p-Value stuff (probably will break something)  
+- Bayes things (help wanted!)
+- Whatever seems fun to code
 
-### Local Development
+## 🔧 Branching Rules
+
+Because even vibe-coding needs some structure:
+
+- `main` - The stable stuff (relatively speaking)
+- `dev/` - General development (where things break first)
+- `feat/feature-name` - New features (like `feat/better-animations`)
+- `fix/issue-name` - Bug fixes (like `fix/wiggling-labels`)
+- `exp/experiment` - Wild experiments (like `exp/3d-particles` - probably won't work)
+
+Example: `git checkout -b feat/confidence-intervals`
+
+## 🚀 Getting Started
+
 ```bash
-# Serve locally for testing
+# Serve locally and pray it works
 npm run serve
 # Visit http://localhost:8000
-```
 
-### GitHub Pages Deployment
-```bash
-# Build and deploy
+# Deploy (if you're brave)
 npm run deploy
 ```
 
-## 📁 Project Structure
+## 📁 What's Where
 
 ```
 xbar/
-├── public/                 # GitHub Pages root
-│   ├── index.html         # Main frontpage  
-│   ├── apps/              # Individual applets
-│   │   └── central-limit-theorem/
-│   └── shared/            # Common components & modules
-├── xbar/                  # Original React app
-├── stat_app/              # Development source
-└── style_guide.md         # Design guidelines
+├── public/           # The stuff that actually gets deployed
+│   ├── apps/         # Individual applets
+│   └── shared/       # Code I pretend to understand
+├── xbar/             # Original React attempt
+├── stat_app/         # Where this journey started (R/TSX)
+└── style_guide.md    # Rules I sometimes follow
 ```
 
-## 🎨 Design System
+## 🎨 "Design System"
 
-All applets follow the unified design guide:
+Loosely following:
+- **Colors**: Navy & Orange (looks professional-ish)
+- **Font**: Inter (because it's trendy)  
+- **Style**: Clean & minimal (hides my CSS skills)
+- **Animation**: Smooth when it works
 
-- **Colors**: Navy (#15616D), Orange (#FF7D00), Warm backgrounds
-- **Typography**: Inter font family, consistent sizing
-- **Layout**: Clean, minimal, accessible
-- **Animation**: Purposeful, lightweight animations
+## 🔧 Tech Stack (aka Things I'm Learning)
 
-See `style_guide.md` for complete specifications.
+- **R**: My comfort zone 💪
+- **JavaScript**: Still figuring out `this` vs `that`
+- **Canvas**: Drawing rectangles in a loop
+- **CSS**: Copy-paste from Stack Overflow
+- **Git**: Commit often, push when scared
 
-## 🔧 Tech Stack
+## 📚 How to Use
 
-- **Framework**: React + TypeScript (development) → Vanilla JS (production)
-- **Styling**: TailwindCSS + custom CSS
-- **Animation**: Canvas-based smooth animations
-- **Math**: Custom numerically stable utilities
-- **RNG**: Deterministic Mulberry32
-- **Architecture**: Modular components for reusability
-
-## 📚 Usage
-
-### Embedding in Slides
+### In Your Slides
 ```html
 <iframe 
-  src="https://yoursite.github.io/xbar/public/apps/central-limit-theorem/" 
+  src="https://Songyosr.github.io/xbar/apps/central-limit-theorem/" 
   width="100%" 
-  height="600"
-  frameborder="0">
+  height="600">
 </iframe>
 ```
 
-### Bookdown Integration
+### In Bookdown (my people!)
 ```markdown
 ```{r, echo=FALSE}
-knitr::include_url("https://yoursite.github.io/xbar/public/apps/central-limit-theorem/")
+knitr::include_url("https://Songyosr.github.io/xbar/apps/central-limit-theorem/")
 ```
 ```
 
 ## 🤝 Contributing
 
-1. Follow the style guide in `style_guide.md`
-2. Ensure components are embeddable and accessible
-3. Test across devices and browsers
-4. Add educational tooltips and help text
+**Please help!** Especially if you actually know JavaScript.
+
+- Found a bug? Open an issue (probably my CSS)
+- Have ideas? PRs welcome (please explain like I'm 5)
+- Want to add R integration? Let's talk!
+- Think my code is weird? You're probably right
+
+**Branching etiquette:**
+1. Use the prefixes above (`feat/`, `fix/`, etc.)
+2. Keep commits small and descriptive  
+3. Test on mobile (I forget this constantly)
+4. Don't judge my variable names
+
+## ⚠️ Disclaimers
+
+- This is a learning project (be gentle)
+- Code quality varies by caffeine levels
+- Mobile testing happens on my phone
+- Comments written for future confused me
+- R users trying JavaScript: we're in this together
 
 ## 📄 License
 
-Educational use. Please attribute when embedding.
+Do whatever. Just maybe mention it came from someone learning to code.
 
 ---
 
-*Built for statistical education with ❤️*
+*Built with R background, JavaScript dreams, and lots of Stack Overflow* 🤷‍♂️✨
