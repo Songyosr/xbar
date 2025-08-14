@@ -67,6 +67,27 @@ xbar/
 ├── xbar/             # Original React attempt
 ├── stat_app/         # Where this journey started (R/TSX)
 └── style_guide.md    # Rules I sometimes follow
+
+## 🥃 Speakeasy Redesign (Modern Style Guide)
+
+The repo is rethemed to the Speakeasy style from `style_guide_modern.md`.
+
+- Tokens/base styles: `public/shared/speakeasy.css` (static) and `xbar/src/theme.css` (CRA app).
+- Use provided classes: `.speakeasy-card`, `.btn-primary`, `.btn-secondary`, `.section`, `.grid.grid-auto`, `.status-available`, `.status-coming-soon`.
+- Typography/spacing: Inter stack, 8px grid; display 2rem, titles 1.5rem, body 1rem.
+- A11y: amber focus outlines, AA contrast, 44px touch targets.
+
+Landing page migration:
+- `public/index.html` links the shared stylesheet. The prior inline `<style>` was removed.
+- Navigation uses the bar metaphor labels.
+
+CRA app migration:
+- `xbar/src/index.css` imports `./theme.css` and uses theme variables for `body`.
+- `xbar/src/App.js` + `App.css` use Speakeasy primitives for the shell UI.
+
+Notes:
+- Night theme scaffold exists in CSS, not enabled yet.
+- Prefer variables and shared classes over ad‑hoc styles.
 ```
 
 ## 🎨 "Design System"
