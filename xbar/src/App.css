@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+/* XBAR React App Component Styles */
+@import url('./theme.css');
+
+.app-shell { 
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Use centralized button and card styles */
+.speakeasy-card {
+  background: #fff;
+  border: 1px solid var(--ticks);
+  box-shadow: 0 2px 8px var(--shadow-soft);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  transition: transform 200ms var(--ease-xbar),
+              box-shadow 200ms var(--ease-xbar);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.speakeasy-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--shadow-soft);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* Import button styles from centralized CSS */
+.btn {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-btn);
+  font-weight: 600;
+  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 140ms var(--ease-xbar),
+              box-shadow 140ms var(--ease-xbar),
+              background 140ms var(--ease-xbar);
 }
 
-.App-link {
-  color: #61dafb;
+.btn-primary {
+  background: var(--orange);
+  color: #fff;
+  box-shadow: 0 2px 8px var(--shadow-soft);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-primary:hover {
+  background: #e86f00;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.btn-secondary {
+  color: var(--navy);
+  border-color: var(--navy);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: rgba(21,97,109,0.06);
 }

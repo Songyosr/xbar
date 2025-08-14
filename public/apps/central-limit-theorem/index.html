@@ -10,96 +10,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FFFFFF;
-            color: #001524;
-        }
-        
-        .app-container {
-            min-height: 100vh;
-            width: 100%;
-        }
-        
-        .header {
-            background: #FFF7EB;
-            padding: 1rem;
-            border-bottom: 1px solid rgba(21, 97, 109, 0.1);
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .back-link {
-            color: #15616D;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .back-link:hover {
-            color: #FF7D00;
-        }
-        
-        .app-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #001524;
-        }
-        
-        .embed-info {
-            font-size: 0.875rem;
-            color: #6B7280;
-            text-align: right;
-        }
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .embed-info {
-                text-align: center;
-            }
-        }
-    </style>
+    <!-- XBAR Applet styles (minimal, distraction-free) -->
+    <link rel="stylesheet" href="../../shared/xbar-applets.css">
 </head>
 <body>
-    <div class="app-container">
-        <header class="header">
-            <div class="header-content">
-                <a href="../../" class="back-link">
-                    ← Back to Stat Applet Lab
-                </a>
-                <h1 class="app-title">Central Limit Theorem Lab</h1>
-                <div class="embed-info">
-                    Embeddable • Accessible • Interactive
-                </div>
-            </div>
-        </header>
-        
+    <div id="xbar-banner"></div>
+    <div class="applet-wrap">
         <div id="clt-app-root"></div>
     </div>
     
+    <!-- Reusable banner injection -->
+    <script src="../../shared/banner.js"></script>
     <!-- Load the Working CLT Component (fallback while debugging modular approach) -->
     <script src="../../shared/clt-complete.js"></script>
     
