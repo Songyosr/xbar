@@ -1,0 +1,47 @@
+/* XBAR Complete Stylesheet */
+/* Centralized CSS using modular approach based on xbar_style_guide.md */
+
+/* Import all modules in order */
+@import url('./xbar-tokens.css');
+@import url('./xbar-base.css');
+@import url('./xbar-brand.css');
+@import url('./xbar-components.css');
+@import url('./xbar-layout.css');
+@import url('./xbar-applets.css');
+
+/* Legacy class name mappings for backwards compatibility */
+.speakeasy-card {
+  /* Map old class to new card component */
+  background: #fff;
+  border: 1px solid var(--ticks);
+  box-shadow: 0 2px 8px var(--shadow-soft);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  transition: transform 200ms var(--ease-xbar),
+              box-shadow 200ms var(--ease-xbar);
+}
+
+.speakeasy-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--shadow-soft);
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
