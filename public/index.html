@@ -1,427 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stat Applet Lab - Interactive Statistics Education</title>
-    <meta name="description" content="A collection of animated, interactive web applets that teach core statistics concepts">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            /* Speakeasy Stats - Day Theme */
-            --text-primary: #2C1810;
-            --text-secondary: #5D4A3A;
-            --bg-primary: #FFF8E7;
-            --bg-secondary: #F5EFE7;
-            
-            --accent-amber: #D4A574;
-            --accent-navy: #1B2951;
-            --accent-gold: #B8860B;
-            
-            --hover-amber: #C19A66;
-            --active-navy: #243A6B;
-            
-            --border-light: #E8DDD4;
-            --shadow-soft: rgba(44, 24, 16, 0.08);
-            
-            /* Legacy mappings for compatibility */
-            --accent-primary: var(--accent-amber);
-            --brand-primary: var(--accent-navy);
-            --accent-secondary: var(--accent-gold);
-        }
-        
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-        
-        header {
-            background: var(--bg-secondary);
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border-light);
-        }
-        
-        .hero {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 500px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        .tagline {
-            font-size: 0.875rem;
-            color: var(--accent-gold);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        
-        main {
-            padding: 3rem 0;
-        }
-        
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .app-card {
-            background: var(--bg-primary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px var(--shadow-soft);
-            transition: all 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
-            border: 1px solid var(--border-light);
-            position: relative;
-        }
-        
-        .app-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            border-radius: 12px;
-            opacity: 0.3;
-            z-index: -1;
-        }
-        
-        .app-card:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px var(--shadow-soft);
-        }
-        
-        .app-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .app-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        
-        .app-status {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .status-available {
-            background: rgba(212, 165, 116, 0.1);
-            color: var(--accent-navy);
-            border-left: 3px solid var(--accent-gold);
-        }
-        
-        .status-coming-soon {
-            background: rgba(184, 134, 11, 0.1);
-            color: var(--text-secondary);
-            border-left: 3px solid var(--accent-amber);
-        }
-        
-        .app-link {
-            display: inline-block;
-            background: var(--accent-amber);
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 150ms ease;
-            box-shadow: 0 1px 3px var(--shadow-soft);
-        }
-        
-        .app-link:hover {
-            background: var(--hover-amber);
-            transform: scale(0.98);
-        }
-        
-        .app-link:disabled,
-        .app-link.disabled {
-            background: var(--border-light);
-            color: var(--text-secondary);
-            cursor: not-allowed;
-            pointer-events: none;
-        }
-        
-        .features {
-            background: var(--bg-secondary);
-            padding: 3rem 0;
-            margin: 3rem 0;
-            border-radius: 16px;
-        }
-        
-        .features h2 {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature {
-            text-align: center;
-        }
-        
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-navy);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: white;
-            box-shadow: 0 2px 8px var(--shadow-soft);
-        }
-        
-        .feature h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .feature p {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.5;
-        }
-        
-        footer {
-            background: var(--text-primary);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        footer p {
-            margin-bottom: 0.5rem;
-        }
-        
-        .tech-stack {
-            color: #9CA3AF;
-            font-size: 0.75rem;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .apps-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XBAR — Code Bar</title>
+  <meta name="description" content="Minimal stat applets — average drinks, standard error." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  
+  <!-- XBAR Centralized CSS -->
+  <link rel="stylesheet" href="shared/xbar-homepage.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="hero">
-                <div class="tagline">Stat Serves Cool - Average Drinks, Standard Errors</div>
-                <h1>xbar</h1>
-                <p>
-                    A vibe-coded collection of interactive stats applets. Started as procrastination from R work, 
-                    somehow became... educational? Perfect for students who learn better when things move around.
-                </p>
-            </div>
+  <div class="container">
+    <div class="top-links" aria-label="Primary">
+      <nav>
+        <a href="#applets">Applets</a>
+        <a href="#blogs">Blogs</a>
+        <a href="https://github.com/Songyosr/xbar" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+
+    <section class="hero" aria-label="Hero">
+      <h1><span class="bracket-navy">[</span>x̄<span class="bracket-orange">]</span> — where stat serves cool <span class="blink-text" style="color: var(--orange);">_</span></h1>
+      <p>
+       Stat applets to understand stats (me included) — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears.
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#applets">Browse Applets</a>
+        <a class="btn btn-outline" href="#blogs">View Blogs</a>
+        <a class="btn btn-ghost" href="https://github.com/Songyosr/xbar" rel="noopener">GitHub</a>
+      </div>
+      <div class="code-accent" aria-hidden="true">
+        <pre>const x̄ = mean(sample) // average drinks, standard error</pre>
+      </div>
+    </section>
+
+    <section id="applets" aria-label="What's on Tap">
+      <div class="section-head">
+        <div>
+          <h2>What's on Tap</h2>
+          <div class="section-sub">Interactive applets</div>
         </div>
-    </header>
-
-    <main>
-        <div class="container">
-            <section class="apps-section">
-                <h2 style="text-align: center; font-size: 2rem; font-weight: 700; margin-bottom: 2rem;">What's on Tap</h2>
-                
-                <div class="apps-grid">
-                    <div class="app-card">
-                        <span class="app-status status-available">Now Serving</span>
-                        <h3>Central Limit Theorem Lab</h3>
-                        <p>
-                            Explore how sample statistics behave as sample size changes. Visualize the magic of the CLT 
-                            with interactive population distributions and animated sampling.
-                        </p>
-                        <a href="apps/central-limit-theorem/" class="app-link">Order Now</a>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>Confidence Interval Builder</h3>
-                        <p>
-                            Build confidence intervals for means and proportions. Watch coverage animations and 
-                            understand why 95% doesn't mean what you think it means.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>p-Value Explorer</h3>
-                        <p>
-                            Navigate the null distribution, visualize shaded tail areas, and understand 
-                            Type I/II errors and statistical power.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>Effect Size Studio</h3>
-                        <p>
-                            Visualize Cohen's d, standardized mean differences, and distribution overlap. 
-                            Learn when effect sizes matter more than p-values.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>Regression Sandbox</h3>
-                        <p>
-                            Manipulate slopes and intercepts in real-time. Explore residuals, leverage, 
-                            and the influence of outliers on linear relationships.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>Bayes Intuition Board</h3>
-                        <p>
-                            Drag priors, see posteriors update in real-time. Explore diagnostic testing 
-                            with PPV/NPV in medical contexts.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>Simulation Blocks</h3>
-                        <p>
-                            Bootstrap and permutation tests with animated resampling. Build confidence 
-                            intervals from bootstrap percentiles.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-
-                    <div class="app-card">
-                        <span class="app-status status-coming-soon">On the Menu Soon</span>
-                        <h3>Study Design & Power</h3>
-                        <p>
-                            Design studies with optimal sample sizes. Explore power curves for 
-                            two-sample tests with unequal allocation.
-                        </p>
-                        <span class="app-link disabled">Check Back Later</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="features">
-                <div class="container">
-                    <h2>Why Choose xbar?</h2>
-                    <div class="features-grid">
-                        <div class="feature">
-                            <div class="feature-icon">🎯</div>
-                            <h3>Pedagogically Focused</h3>
-                            <p>Every animation and interaction is designed to illuminate a specific statistical concept, not just entertain.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">⚡</div>
-                            <h3>Lightweight & Fast</h3>
-                            <p>Built with performance in mind. Smooth animations and responsive interactions on any device.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">🔧</div>
-                            <h3>Embeddable</h3>
-                            <p>Drop directly into slides, Bookdown chapters, or LMS platforms. No side-chat or assessment UI to distract.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">🎨</div>
-                            <h3>Unified Design</h3>
-                            <p>Consistent color palette, typography, and interaction patterns across all applets for seamless learning.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">♿</div>
-                            <h3>Accessible</h3>
-                            <p>Keyboard navigation, screen reader support, and color-blind friendly design following WCAG guidelines.</p>
-                        </div>
-                        
-                        <div class="feature">
-                            <div class="feature-icon">🔬</div>
-                            <h3>Scientifically Accurate</h3>
-                            <p>Numerically stable algorithms and deterministic random number generation for reproducible results.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+        <div class="beta" aria-hidden="true">
+          <span class="navy">[</span><span>beta</span><span class="orange">]</span>
         </div>
-    </main>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="row">
+            <h3>CLT Lab</h3>
+            <span class="badge badge-available">Available</span>
+          </div>
+          <p>See sampling distributions build up, with smart parameter lines and SE overlays.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="apps/central-limit-theorem/">Launch</a>
+            <a class="btn btn-outline" href="#blogs">Blog</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3>Confidence Intervals</h3>
+            <span class="badge badge-coming">Coming soon</span>
+          </div>
+          <p>Simulate coverage, tweak n & σ, and watch intervals catch μ.</p>
+          <div class="actions">
+            <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
+            <a class="btn btn-outline" href="#blogs">Blog</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="row">
+            <h3>p‑values</h3>
+            <span class="badge badge-coming">Coming soon</span>
+          </div>
+          <p>Explore null distributions and error rates without the drama.</p>
+          <div class="actions">
+            <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
+            <a class="btn btn-outline" href="#blogs">Blog</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" aria-label="Blogs">
+      <div class="section-head">
+        <div>
+          <h2>Blogs</h2>
+          <div class="section-sub">Notes from the bar</div>
+        </div>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="row">
+            <h3>Why x̄</h3>
+          </div>
+          <p>A short on the name, teaching goals, and this tiny lab.</p>
+          <div class="actions">
+            <a class="btn btn-outline" href="#">Read</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>Design Notes</h3>
+          </div>
+          <p>Color, spacing, and motion choices for clarity and calm.</p>
+          <div class="actions">
+            <a class="btn btn-outline" href="#">Read</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="row">
+            <h3>Embedding Guide</h3>
+          </div>
+          <p>Drop an applet into slides or Bookdown with no build steps.</p>
+          <div class="actions">
+            <a class="btn btn-outline" href="#">Read</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 xbar. Where statistical significance is served neat.</p>
-            <p class="tech-stack">Built with React + TypeScript + TailwindCSS + shadcn/ui + Framer Motion + Recharts</p>
+      <div class="row">
+        <p>average drinks, <span style="font-weight:700; color:#001524;">standard error</span></p>
+        <div style="display:flex; gap:0.75rem;">
+          <a href="#blogs">Blogs</a>
+          <a href="https://github.com/Songyosr/xbar" rel="noopener">GitHub</a>
+          <a href="#contact">Contact</a>
         </div>
+      </div>
     </footer>
+  </div>
 </body>
 </html>

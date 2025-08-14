@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLT Debug Page</title>
+</head>
+<body>
+    <h1>CLT Module Debug</h1>
+    <div id="debug-log" style="background: #f0f0f0; padding: 1rem; margin: 1rem 0; max-height: 300px; overflow-y: scroll;"></div>
+    
+    <div style="display: flex;">
+        <div style="flex: 1;">
+            <canvas id="test-canvas" style="border: 1px solid #ccc;"></canvas>
+        </div>
+        <div id="test-controls" style="width: 300px; padding: 1rem;"></div>
+    </div>
+    <div id="test-actions"></div>
+    
+    <!-- Load modules in order -->
+    <script src="public/shared/modules/stat-engine.js"></script>
+    <script src="public/shared/modules/renderer.js"></script>
+    <script src="public/shared/modules/ui-components.js"></script>
+    <script src="public/shared/modules/clt-app.js"></script>
+    
+    <script>
+        function log(message) {
+            const debugLog = document.getElementById('debug-log');
+            debugLog.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+            debugLog.scrollTop = debugLog.scrollHeight;
+            console.log(message);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            log('DOM loaded, testing modules...');
+            
+            try {
+                log('Testing StatEngine...');
+                if (window.StatEngine) {
+                    const engine = new StatEngine();
+                    log('✓ StatEngine works');
+                } else {
+                    log('✗ StatEngine not found');
+                }
+                
+                log('Testing StatRenderer...');
+                if (window.StatRenderer) {
+                    const canvas = document.getElementById('test-canvas');
+                    const renderer = new StatRenderer(canvas);
+                    log('✓ StatRenderer works');
+                } else {
+                    log('✗ StatRenderer not found');
+                }
+                
+                log('Testing UIComponents...');
+                if (window.UIComponents) {
+                    log('✓ UIComponents found');
+                    log('Available components: ' + Object.keys(window.UIComponents).join(', '));
+                } else {
+                    log('✗ UIComponents not found');
+                }
+                
+                log('Testing CLTApp...');
+                if (window.CLTApp) {
+                    const app = new CLTApp('test-canvas', 'test-controls', 'test-actions');
+                    log('✓ CLTApp initialized successfully!');
+                } else {
+                    log('✗ CLTApp not found');
+                }
+                
+            } catch (error) {
+                log('✗ Error: ' + error.message);
+                log('Stack trace: ' + error.stack);
+            }
+        });
+    </script>
+</body>
+</html>
