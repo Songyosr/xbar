@@ -1,2 +1,4 @@
 trash/
 bin/
+node_modules/
+xbar/node_modules/
