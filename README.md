@@ -1,7 +1,7 @@
 # XBAR 🍸📊
-**Stat Serves Cool - Average Drinks, Standard Errors**
+**Stat serves cool — average drinks, standard error**
 
-> *"I mainly know R, but I got vibes and tryna do some side proj"* - The Bartender
+> Side project, mostly vibe‑code; native R user learning JS — please help lol.
 
 ## 🤷‍♂️ What Is This?
 
@@ -61,36 +61,32 @@ npm run deploy
 
 ```
 xbar/
-├── public/           # The stuff that actually gets deployed
-│   ├── apps/         # Individual applets
-│   └── shared/       # Code I pretend to understand
-├── xbar/             # Original React attempt
-├── stat_app/         # Where this journey started (R/TSX)
-└── style_guide.md    # Rules I sometimes follow
+├── public/               # Deployed static site
+│   ├── apps/             # Individual applets (vanilla JS/canvas)
+│   └── shared/           # Shared JS/CSS for applets + homepage
+├── xbar/                 # CRA shell (React) used for builds/assets
+├── stat_app/             # Where this journey started (R/TSX)
+└── xbar_style_guide.md   # Current visual/UX guide (Code Bar)
 
-## 🥃 Speakeasy Redesign (Modern Style Guide)
+## 🎛️ XBAR Style Guide (Code Bar)
 
-The repo is rethemed to the Speakeasy style from `style_guide_modern.md`.
+The repo uses the XBAR “Code Bar” style defined in `xbar_style_guide.md`.
 
-- Tokens/base styles: `public/shared/speakeasy.css` (static) and `xbar/src/theme.css` (CRA app).
-- Use provided classes: `.speakeasy-card`, `.btn-primary`, `.btn-secondary`, `.section`, `.grid.grid-auto`, `.status-available`, `.status-coming-soon`.
-- Typography/spacing: Inter stack, 8px grid; display 2rem, titles 1.5rem, body 1rem.
-- A11y: amber focus outlines, AA contrast, 44px touch targets.
+- Tokens/base styles: `public/shared/xbar-applets.css` (applets) and `public/shared/xbar-homepage.css` (homepage). For CRA, use `xbar/src/xbar-tokens.css` and `xbar/src/theme.css`.
+- Use the provided classes/utilities from those CSS files (cards, buttons, grids, badges) instead of ad‑hoc inline styles.
+- Typography: Inter; spacing on an 8px grid; calm motion; high contrast.
+- Accessibility: visible focus rings, AA contrast, touch targets ≥44px.
 
-Landing page migration:
-- `public/index.html` links the shared stylesheet. The prior inline `<style>` was removed.
-- Navigation uses the bar metaphor labels.
+Landing page:
+- `public/index.html` is wired to `shared/xbar-homepage.css` and follows the bracket + cursor motif.
 
-CRA app migration:
-- `xbar/src/index.css` imports `./theme.css` and uses theme variables for `body`.
-- `xbar/src/App.js` + `App.css` use Speakeasy primitives for the shell UI.
+React shell (optional when building assets):
+- `xbar/src/index.css` imports theme tokens; `App.css` uses XBAR primitives.
 
-Notes:
-- Night theme scaffold exists in CSS, not enabled yet.
-- Prefer variables and shared classes over ad‑hoc styles.
+Prefer variables and shared classes over custom inline CSS.
 ```
 
-## 🎨 "Design System"
+## 🎨 Design Vibe
 
 Loosely following:
 - **Colors**: Navy & Orange (looks professional-ish)
