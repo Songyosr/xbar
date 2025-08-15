@@ -1,6 +1,8 @@
-# XBAR Style Guide — “Code Bar” (v1)
+# XBAR Style Guide — "Code Bar" (v1.1)
 
 Minimal, modern, high‑contrast, white background. Navy + orange accents. Subtle coding cues (colored `[]`, blinking cursor) without becoming a terminal theme. Applies to **homepage** and **applets** (React or vanilla JS canvas).
+
+**✅ v1.1 Update**: CSS variables have been harmonized across all stylesheets for consistency.
 
 ---
 
@@ -200,7 +202,7 @@ export const XBAR_COLORS = {
 | Engine colors   | `stat-engine.js` `config.colors` | Sync text/background/accent to Ink/Navy/Orange                                       |
 | UI panel        | `ui-components.js` styles        | Set fonts, button styles, panel bg `#FFF7EB` optional, or white for absolute minimal |
 | Lines + masking | `rendering-utils.js`             | Ensure parameter/sample/sampling line colors + white masking segment under overlaps  |
-| Homepage        | React MVP (Canvas)               | Keep brackets + blinking cursor; CTAs in Orange/Navy                                 |
+| Homepage        | `public/shared/xbar-homepage.css` | ✅ **COMPLETED** - Uses harmonized variables (`--ink`, `--info`, `--navy`, `--orange`) |
 
 ---
 

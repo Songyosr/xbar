@@ -70,20 +70,25 @@ xbar/
 
 ## 🎛️ XBAR Style Guide (Code Bar)
 
-The repo uses the XBAR “Code Bar” style defined in `xbar_style_guide.md`.
+The repo uses the XBAR "Code Bar" style defined in `xbar_style_guide.md`.
 
-- Tokens/base styles: `public/shared/xbar-applets.css` (applets) and `public/shared/xbar-homepage.css` (homepage). For CRA, use `xbar/src/xbar-tokens.css` and `xbar/src/theme.css`.
-- Use the provided classes/utilities from those CSS files (cards, buttons, grids, badges) instead of ad‑hoc inline styles.
-- Typography: Inter; spacing on an 8px grid; calm motion; high contrast.
-- Accessibility: visible focus rings, AA contrast, touch targets ≥44px.
+**Harmonized CSS Variables**: All stylesheets now use consistent variable names (`--ink`, `--info`, `--navy`, `--orange`, etc.)
 
-Landing page:
-- `public/index.html` is wired to `shared/xbar-homepage.css` and follows the bracket + cursor motif.
+- **Homepage**: `public/shared/xbar-homepage.css` - Landing page with harmonized variables
+- **Applets**: `public/shared/xbar-applets.css` - Minimal applet styling  
+- **React**: `xbar/src/xbar-tokens.css` + `xbar/src/theme.css` - Full token system
 
-React shell (optional when building assets):
-- `xbar/src/index.css` imports theme tokens; `App.css` uses XBAR primitives.
+**Design Principles**:
+- Typography: Inter; spacing on an 8px grid; calm motion; high contrast
+- Accessibility: visible focus rings, AA contrast, touch targets ≥44px
+- Use provided classes/utilities instead of ad-hoc inline styles
 
-Prefer variables and shared classes over custom inline CSS.
+**Implementation**:
+- `public/index.html` → `shared/xbar-homepage.css` (bracket + cursor motif)
+- Applet pages → `shared/xbar-applets.css` (distraction-free)
+- React shell → imports from `xbar/src/` (build tools only)
+
+Prefer CSS variables and shared classes over custom inline CSS.
 ```
 
 ## 🎨 Design Vibe
