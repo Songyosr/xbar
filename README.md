@@ -120,11 +120,11 @@ Loosely following:
 
 ### In Bookdown (my people!)
 ```markdown
-```{r, echo=FALSE}
+{r, echo=FALSE}
 knitr::include_url("https://Songyosr.github.io/xbar/apps/central-limit-theorem/")
-```
-```
 
+```
+ß
 ## 🤝 Contributing
 
 **Please help!** Especially if you actually know JavaScript.
@@ -154,4 +154,4 @@ Do whatever. Just maybe mention it came from someone learning to code.
 
 ---
 
-*Built with R background, JavaScript dreams, and lots of Stack Overflow* 🤷‍♂️✨
+*Built with R background, JavaScript dreams, and lots of Claude Tokens* 🤷‍♂️✨
