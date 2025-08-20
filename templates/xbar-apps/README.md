@@ -1,7 +1,7 @@
 # xbar-apps (Templates)
 
 Purpose
-- Host prebuilt interactive applets for XBAR at `https://<user>.github.io/xbar-apps/<applet>/`.
+- Host prebuilt interactive applets for XBAR at `https://<user>.github.io/xbar-apps/apps/<applet>/`.
 - Keep this repo static-only; embed from the main site via iframe.
 
 Structure
@@ -24,9 +24,9 @@ Add a New Applet
 - Commit and push to `main` to deploy.
 
 Embed from Main Site
-- Iframe URL pattern: `https://<user>.github.io/xbar-apps/<applet-name>/`
+- Iframe URL pattern: `https://<user>.github.io/xbar-apps/apps/<applet-name>/`
 - Example (Hugo/blogdown shortcode):
-  - `{{< iframe src="https://<user>.github.io/xbar-apps/central-limit-theorem/" height="640" >}}`
+  - `{{< iframe src="https://<user>.github.io/xbar-apps/apps/central-limit-theorem/" height="640" >}}`
 
 Build Pipelines (optional)
 - If an applet needs a build step, output to `dist/apps/<name>/` and set `publish_dir: dist` in the workflow, adding a build step before deploy.
