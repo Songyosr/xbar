@@ -1,14 +1,13 @@
-[theme]
-name = "XBAR Hugo"
+name = "xbar-hugo"
 license = "MIT"
-licenselink = "https://github.com/Songyosr/xbar/blob/main/LICENSE"
-description = "A Hugo theme for XBAR - Code Bar style with navy and orange accents"
-homepage = "https://github.com/Songyosr/xbar"
-demosite = "https://songyosr.github.io/xbar"
-tags = ["blog", "statistics", "education", "minimal", "responsive"]
-features = ["responsive", "blog", "syntax-highlighting"]
-min_version = "0.112.0"
+licenselink = "https://opensource.org/licenses/MIT"
+description = "Minimal XBAR theme matching existing style"
+homepage = "https://Songyosr.github.io/xbar"
+tags = ["blog", "minimal", "xbar"]
+features = ["blog", "apps"]
+min_version = "0.100.0"
 
 [author]
-name = "Songyos Rajborirug"
-homepage = "https://github.com/Songyosr"
+  name = "XBAR"
+  homepage = "https://Songyosr.github.io/xbar"
+

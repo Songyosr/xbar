@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <article class="app-embed">
+    <header class="app-header">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.app_url }}
+        <p>
+          <a class="btn" href="/apps/">← Back to Apps</a>
+          <a class="btn primary" href="{{ . }}" target="_blank" rel="noopener">Open full screen</a>
+        </p>
+      {{ end }}
+    </header>
+    <div class="content">
+      {{ with .Params.app_url }}
+        {{< iframe src=. height=( or $.Params.height 640 ) >}}
+      {{ else }}
+        {{ .Content }}
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+

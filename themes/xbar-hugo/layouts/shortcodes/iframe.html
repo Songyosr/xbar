@@ -1,0 +1,6 @@
+{{ $src := .Get "src" }}
+{{ $height := .Get "height" | default "600" }}
+<div class="iframe-wrap" style="--iframe-h: {{ $height }}px;">
+  <iframe src="{{ $src }}" width="100%" height="{{ $height }}" loading="lazy" allowfullscreen></iframe>
+</div>
+

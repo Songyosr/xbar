@@ -1,110 +1,34 @@
-{{ define "title" }}{{ .Site.Title }} — {{ .Site.Params.tagline | default "Code Bar" }}{{ end }}
-
 {{ define "main" }}
-<section class="hero" aria-label="Hero">
-  <h1>
-    <span class="bracket-navy">[</span>{{ .Site.Params.brand | default "x̄" }}<span class="bracket-orange">]</span> 
-    — {{ .Site.Params.tagline | default "where stat serves cool" }} 
-    <span class="blink-text" style="color: var(--orange);">_</span>
-  </h1>
-  <p>{{ .Site.Params.description | default "Stat applets to understand stats — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears." }}</p>
-  
-  <div class="cta">
-    <a class="btn btn-primary" href="#applets">Browse Applets</a>
-    <a class="btn btn-outline" href="#blogs">View Blogs</a>
-    <a class="btn btn-ghost" href="{{ .Site.Params.github | default "#" }}" rel="noopener">GitHub</a>
-  </div>
-  
-  <div class="code-accent" aria-hidden="true">
-    <pre>const x̄ = mean(sample) // average drinks, standard error</pre>
-  </div>
+<section class="home-hero">
+  <h1>{{ .Site.Title }}</h1>
+  {{ with .Site.Params.tagline }}<p class="tagline">{{ . }}</p>{{ end }}
 </section>
 
-{{ if .Site.Params.applets }}
-<section id="applets" aria-label="What's on Tap">
-  <div class="section-head">
-    <div>
-      <h2>What's on Tap</h2>
-      <div class="section-sub">Interactive applets</div>
-    </div>
-    <div class="beta" aria-hidden="true">
-      <span class="navy">[</span><span>beta</span><span class="orange">]</span>
-    </div>
-  </div>
-
-  <div class="grid cols-3">
-    {{ range .Site.Params.applets }}
-    <div class="card">
-      <div class="row">
-        <h3>{{ .name }}</h3>
-        <span class="badge {{ if eq .status "available" }}badge-available{{ else }}badge-coming{{ end }}">
-          {{ if eq .status "available" }}Available{{ else }}Coming soon{{ end }}
-        </span>
-      </div>
-      <p>{{ .description }}</p>
-      <div class="actions">
-        {{ if eq .status "available" }}
-        <a class="btn btn-primary" href="{{ .url }}">Launch</a>
-        {{ else }}
-        <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
-        {{ end }}
-        <a class="btn btn-outline" href="#blogs">Blog</a>
-      </div>
-    </div>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-
-<section id="blogs" aria-label="Blogs">
-  <div class="section-head">
-    <div>
-      <h2>Blogs</h2>
-      <div class="section-sub">Notes from the bar</div>
-    </div>
-  </div>
-  
-  <div class="grid cols-3">
-    {{ range first 6 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-    <div class="card">
-      <div class="row">
-        <h3><a href="{{ .Permalink }}" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
-      </div>
-      <p>{{ .Summary | truncate 120 }}</p>
-      <div class="actions">
-        <a class="btn btn-outline" href="{{ .Permalink }}">Read</a>
-      </div>
-    </div>
+<section>
+  <h2>Latest Posts</h2>
+  <ul class="posts">
+    {{ range first 5 ( where .Site.RegularPages "Section" "posts" ) }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span class="muted">— {{ .Date.Format "2006-01-02" }}</span>
+      </li>
     {{ else }}
-    <!-- Default blog cards if no posts exist -->
-    <div class="card">
-      <div class="row">
-        <h3>Why x̄</h3>
-      </div>
-      <p>A short on the name, teaching goals, and this tiny lab.</p>
-      <div class="actions">
-        <a class="btn btn-outline" href="#">Read</a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <h3>Design Notes</h3>
-      </div>
-      <p>Color, spacing, and motion choices for clarity and calm.</p>
-      <div class="actions">
-        <a class="btn btn-outline" href="#">Read</a>
-      </div>
-    </div>
-    <div class="card">
-      <div class="row">
-        <h3>Embedding Guide</h3>
-      </div>
-      <p>Drop an applet into slides or Bookdown with no build steps.</p>
-      <div class="actions">
-        <a class="btn btn-outline" href="#">Read</a>
-      </div>
-    </div>
+      <li class="muted">No posts yet.</li>
     {{ end }}
-  </div>
+  </ul>
+</section>
+
+<section>
+  <h2>Featured Apps</h2>
+  <ul class="apps">
+    {{ range first 6 ( where .Site.RegularPages "Section" "apps" ) }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+    {{ else }}
+      <li class="muted">No apps yet.</li>
+    {{ end }}
+  </ul>
 </section>
 {{ end }}
+
