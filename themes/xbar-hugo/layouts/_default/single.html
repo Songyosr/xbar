@@ -1,0 +1,53 @@
+{{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article>
+  <header>
+    <h1>{{ .Title }}</h1>
+    {{ if .Date }}
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+        {{ .Date.Format "January 2, 2006" }}
+      </time>
+      {{ if .Params.author }}
+      by {{ .Params.author }}
+      {{ end }}
+    </div>
+    {{ end }}
+  </header>
+  
+  <div class="content">
+    {{ .Content }}
+  </div>
+  
+  {{ if .Params.tags }}
+  <div class="tags" style="margin-top: 2rem;">
+    {{ range .Params.tags }}
+    <span class="badge" style="margin-right: 0.5rem;">{{ . }}</span>
+    {{ end }}
+  </div>
+  {{ end }}
+</article>
+
+{{ if or .PrevInSection .NextInSection }}
+<nav class="post-nav" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    {{ if .PrevInSection }}
+    <a href="{{ .PrevInSection.Permalink }}" class="btn btn-outline">
+      ← {{ .PrevInSection.Title }}
+    </a>
+    {{ else }}
+    <div></div>
+    {{ end }}
+    
+    {{ if .NextInSection }}
+    <a href="{{ .NextInSection.Permalink }}" class="btn btn-outline">
+      {{ .NextInSection.Title }} →
+    </a>
+    {{ else }}
+    <div></div>
+    {{ end }}
+  </div>
+</nav>
+{{ end }}
+{{ end }}

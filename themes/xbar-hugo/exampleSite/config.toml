@@ -1,0 +1,39 @@
+baseURL = "https://example.com"
+languageCode = "en-us"
+title = "XBAR — Code Bar"
+theme = "xbar-hugo"
+
+[params]
+  brand = "x̄"
+  tagline = "where stat serves cool"
+  description = "Stat applets to understand stats — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears."
+  footerText = "average drinks, standard error"
+  github = "https://github.com/Songyosr/xbar"
+  contact = "#contact"
+  
+  # Main sections for blog posts
+  mainSections = ["posts", "blog"]
+  
+  # Applets configuration
+  [[params.applets]]
+    name = "CLT Lab"
+    description = "See sampling distributions build up, with smart parameter lines and SE overlays."
+    url = "/apps/central-limit-theorem/"
+    status = "available"
+  
+  [[params.applets]]
+    name = "Confidence Intervals"
+    description = "Simulate coverage, tweak n & σ, and watch intervals catch μ."
+    url = "#"
+    status = "coming"
+  
+  [[params.applets]]
+    name = "p‑values"
+    description = "Explore null distributions and error rates without the drama."
+    url = "#"
+    status = "coming"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ux on XBAR — Code Bar</title>
+    <link>http://localhost:1313/tags/ux/</link>
+    <description>Recent content in Ux on XBAR — Code Bar</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 17 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/ux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Design Notes</title>
+      <link>http://localhost:1313/posts/design-notes/</link>
+      <pubDate>Sun, 17 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/design-notes/</guid>
+      <description>&lt;p&gt;Color, spacing, and motion choices for clarity and calm.&lt;/p&gt;&#xA;&lt;h2 id=&#34;color-palette&#34;&gt;Color Palette&lt;/h2&gt;&#xA;&lt;p&gt;The XBAR color system uses a minimal palette designed for high contrast and accessibility:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Ink (#001524)&lt;/strong&gt;: Primary text color, ensuring maximum readability&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Navy (#15616D)&lt;/strong&gt;: Primary accent for parameter lines and UI elements&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Orange (#FF7D00)&lt;/strong&gt;: Call-to-action color and active states&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Info (#475569)&lt;/strong&gt;: Secondary text for metadata and descriptions&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;typography&#34;&gt;Typography&lt;/h2&gt;&#xA;&lt;p&gt;Inter for body text provides excellent readability at all sizes, while JetBrains Mono adds subtle coding references without overwhelming the design.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

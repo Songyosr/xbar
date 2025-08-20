@@ -1,0 +1,10 @@
+<footer>
+  <div class="row">
+    <p>{{ .Site.Params.footerText | default "average drinks, standard error" }}</p>
+    <div style="display:flex; gap:0.75rem;">
+      <a href="{{ "/" | relURL }}#blogs">Blogs</a>
+      <a href="{{ .Site.Params.github | default "#" }}" rel="noopener">GitHub</a>
+      <a href="{{ .Site.Params.contact | default "#contact" }}">Contact</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Philosophy on XBAR — Code Bar</title>
+    <link>http://localhost:1313/tags/philosophy/</link>
+    <description>Recent content in Philosophy on XBAR — Code Bar</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/philosophy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why x̄</title>
+      <link>http://localhost:1313/posts/why-xbar/</link>
+      <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/why-xbar/</guid>
+      <description>&lt;p&gt;A short on the name, teaching goals, and this tiny lab.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-name&#34;&gt;The Name&lt;/h2&gt;&#xA;&lt;p&gt;x̄ (x-bar) represents the sample mean in statistics — the average of a sample drawn from a population. It&amp;rsquo;s one of the most fundamental concepts in statistical inference, bridging the gap between what we observe and what we can infer about the world.&lt;/p&gt;&#xA;&lt;h2 id=&#34;teaching-goals&#34;&gt;Teaching Goals&lt;/h2&gt;&#xA;&lt;p&gt;This project aims to make statistical concepts more intuitive through interactive visualization. Rather than just showing formulas, we want students to &lt;em&gt;see&lt;/em&gt; and &lt;em&gt;feel&lt;/em&gt; how sampling distributions emerge, how confidence intervals behave, and why p-values work the way they do.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

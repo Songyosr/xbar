@@ -1,0 +1,26 @@
+<div class="top-links" aria-label="Primary">
+  <nav>
+    <a href="{{ "/" | relURL }}#applets">Applets</a>
+    <a href="{{ "/" | relURL }}#blogs">Blogs</a>
+    <a href="{{ .Site.Params.github | default "#" }}" rel="noopener">GitHub</a>
+  </nav>
+</div>
+
+<header>
+  <a href="{{ "/" | relURL }}" class="logo">
+    <span class="mark">
+      <span class="bracket-navy">[</span>{{ .Site.Params.brand | default "x̄" }}<span class="bracket-orange">]</span>
+    </span>
+    {{ if ne .Page.Kind "home" }}
+    {{ .Site.Title }}
+    {{ end }}
+  </a>
+  
+  {{ if ne .Page.Kind "home" }}
+  <nav>
+    <a href="{{ "/" | relURL }}">Home</a>
+    <a href="{{ "/" | relURL }}#applets">Applets</a>
+    <a href="{{ "/" | relURL }}#blogs">Blogs</a>
+  </nav>
+  {{ end }}
+</header>
