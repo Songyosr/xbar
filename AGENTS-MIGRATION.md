@@ -5,14 +5,14 @@ Migrate the current site to a Hugo blogdown site deployed to GitHub Pages, while
 
 ## Topology
 - Main site (this repo): `https://<user>.github.io/xbar/` (Hugo + blogdown + theme).
-- Applets repo: `xbar-apps` → `https://<user>.github.io/xbar-apps/<applet>/` (static applets).
+- Applets repo: `xbar-apps` → `https://<user>.github.io/xbar-apps/apps/<applet>/` (static applets).
 - Social link: `https://github.com/Songyosr/xbar`.
 
 ## Deliverables (v1)
 - Theme scaffold `themes/xbar-hugo/` with header (Blog, Apps) and footer (social).
 - Home with two blocks: Latest Posts, Featured Apps.
 - Apps listing page and a CLT app page that embeds an iframe.
-- CLT app migrated to `xbar-apps/central-limit-theorem/` and publicly reachable.
+- CLT app migrated to `xbar-apps/apps/central-limit-theorem/` and publicly reachable.
 - CI for both repos deploying to `gh-pages` on push to `main`.
 
 ## Repo Structures
@@ -31,7 +31,7 @@ Migrate the current site to a Hugo blogdown site deployed to GitHub Pages, while
 - xbar-apps: Static deploy of repo root (or `dist/` if builds later) → `gh-pages`.
 
 ## Embedding Rules
-- Use absolute URLs in iframe: `https://<user>.github.io/xbar-apps/<applet>/`.
+- Use absolute URLs in iframe: `https://<user>.github.io/xbar-apps/apps/<applet>/`.
 - Provide “Open full screen” and “Back to Apps” links on app pages.
 
 ## Verification
