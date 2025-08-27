@@ -1,14 +1,15 @@
 {{ define "main" }}
 <section class="hero" aria-label="Hero">
   <h1><span class="bracket-navy">[</span>x̄<span class="bracket-orange">]</span> — where stat serves cool <span class="blink-text" style="color: var(--orange);">_</span></h1>
-  <p>
-   Stat applets to understand stats (me included) — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears.
-  </p>
-  <div class="cta">
-    <a class="btn btn-primary" href="#applets">Browse Applets</a>
-    <a class="btn btn-outline" href="#blogs">View Blogs</a>
-    <a class="btn btn-ghost" href="{{ .Site.Params.social.github }}" rel="noopener">GitHub</a>
-  </div>
+  {{ with .Content }}
+    <div class="hero-content">
+      {{ . }}
+    </div>
+  {{ else }}
+    <p>
+     Stat applets to understand stats (me included) — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears.
+    </p>
+  {{ end }}
   <div class="code-accent" aria-hidden="true">
     <pre>const x̄ = mean(sample) // average drinks, standard error</pre>
   </div>
