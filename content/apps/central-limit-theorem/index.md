@@ -1,12 +1,12 @@
 ---
 title: "Central Limit Theorem Lab"
 summary: "Animated sampling from populations to visualize the CLT."
-app_url: "https://Songyosr.github.io/xbar-apps/apps/central-limit-theorem/"
-height: 640
+# Using shortcode instead of app_url for flexible placement
 ---
 
-This applet demonstrates how sample means tend to a normal distribution as sample size increases.
+# Understanding the Central Limit Theorem
 
-Tips
-- Use the controls to adjust population and sample sizes.
-- Open full screen for best experience.
+{{< applet src="https://Songyosr.github.io/xbar-apps/apps/central-limit-theorem/" width="100%" >}}
+
+## Key Takeaways
+

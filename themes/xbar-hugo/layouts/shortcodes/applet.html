@@ -1,0 +1,6 @@
+{{ $src := .Get "src" }}
+{{ $height := .Get "height" | default 640 }}
+{{ $width := .Get "width" | default "100%" }}
+<div class="app-iframe-container" style="margin: 2rem 0;">
+  <iframe src="{{ $src }}" width="{{ $width }}" height="{{ $height }}" frameborder="0" style="border-radius: 8px;"></iframe>
+</div>

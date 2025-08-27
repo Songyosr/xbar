@@ -1,15 +1,8 @@
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
-    {{ with .Site.Menus.main }}
-    <nav aria-label="Main navigation">
-      <ul>
-        {{ range . }}
-          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-        {{ end }}
-      </ul>
-    </nav>
-    {{ end }}
-  </div>
-</header>
+<div class="top-links" aria-label="Primary">
+  <nav>
+    <a href="#applets">Applets</a>
+    <a href="#blogs">Blogs</a>
+    <a href="{{ .Site.Params.social.github }}" rel="noopener">GitHub</a>
+  </nav>
+</div>
 

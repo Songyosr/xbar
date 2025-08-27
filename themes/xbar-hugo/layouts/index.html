@@ -33,36 +33,93 @@
         </div>
         <p>{{ .Summary | default .Description }}</p>
         <div class="actions">
-          <a class="btn btn-outline" href="{{ .RelPermalink }}">View</a>
+          <a class="btn btn-primary" href="{{ .RelPermalink }}">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
         </div>
       </div>
     {{ else }}
       <div class="card">
-        <h3>Coming Soon</h3>
-        <p>Interactive applets are being developed.</p>
+        <div class="row">
+          <h3>CLT Lab</h3>
+          <span class="badge badge-available">Available</span>
+        </div>
+        <p>See sampling distributions build up, with smart parameter lines and SE overlays.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/apps/central-limit-theorem/">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Confidence Intervals</h3>
+          <span class="badge badge-coming">Coming soon</span>
+        </div>
+        <p>Simulate coverage, tweak n & σ, and watch intervals catch μ.</p>
+        <div class="actions">
+          <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>p‑values</h3>
+          <span class="badge badge-coming">Coming soon</span>
+        </div>
+        <p>Explore null distributions and error rates without the drama.</p>
+        <div class="actions">
+          <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
       </div>
     {{ end }}
   </div>
 </section>
 
-<section id="blogs" aria-label="Notes">
+<section id="blogs" aria-label="Blogs">
   <div class="section-head">
     <div>
-      <h2>Notes</h2>
-      <div class="section-sub">Recent posts</div>
+      <h2>Blogs</h2>
+      <div class="section-sub">Notes from the bar</div>
     </div>
   </div>
-  <div class="grid">
+  <div class="grid cols-3">
     {{ range first 3 ( where .Site.RegularPages "Section" "posts" ) }}
       <div class="card">
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
+        <div class="row">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        </div>
         <p>{{ .Summary | default .Description }}</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="{{ .RelPermalink }}">Read</a>
+        </div>
       </div>
     {{ else }}
       <div class="card">
-        <h3>Welcome</h3>
-        <p>Blog posts and notes will appear here.</p>
+        <div class="row">
+          <h3>Why x̄</h3>
+        </div>
+        <p>A short on the name, teaching goals, and this tiny lab.</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="#">Read</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Design Notes</h3>
+        </div>
+        <p>Color, spacing, and motion choices for clarity and calm.</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="#">Read</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Embedding Guide</h3>
+        </div>
+        <p>Drop an applet into slides or Bookdown with no build steps.</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="#">Read</a>
+        </div>
       </div>
     {{ end }}
   </div>
