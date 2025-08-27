@@ -2,7 +2,8 @@ baseURL: "https://Songyosr.github.io/xbar"
 languageCode: en-us
 title: "XBAR"
 theme: "xbar-hugo"
-paginate: 10
+pagination:
+  pagerSize: 10
 publishDir: "hugo_public"
 
 menu:

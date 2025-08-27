@@ -1,34 +1,71 @@
 {{ define "main" }}
-<section class="home-hero">
-  <h1>{{ .Site.Title }}</h1>
-  {{ with .Site.Params.tagline }}<p class="tagline">{{ . }}</p>{{ end }}
+<section class="hero" aria-label="Hero">
+  <h1><span class="bracket-navy">[</span>x̄<span class="bracket-orange">]</span> — where stat serves cool <span class="blink-text" style="color: var(--orange);">_</span></h1>
+  <p>
+   Stat applets to understand stats (me included) — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears.
+  </p>
+  <div class="cta">
+    <a class="btn btn-primary" href="#applets">Browse Applets</a>
+    <a class="btn btn-outline" href="#blogs">View Blogs</a>
+    <a class="btn btn-ghost" href="{{ .Site.Params.social.github }}" rel="noopener">GitHub</a>
+  </div>
+  <div class="code-accent" aria-hidden="true">
+    <pre>const x̄ = mean(sample) // average drinks, standard error</pre>
+  </div>
 </section>
 
-<section>
-  <h2>Latest Posts</h2>
-  <ul class="posts">
-    {{ range first 5 ( where .Site.RegularPages "Section" "posts" ) }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <span class="muted">— {{ .Date.Format "2006-01-02" }}</span>
-      </li>
-    {{ else }}
-      <li class="muted">No posts yet.</li>
-    {{ end }}
-  </ul>
-</section>
-
-<section>
-  <h2>Featured Apps</h2>
-  <ul class="apps">
+<section id="applets" aria-label="What's on Tap">
+  <div class="section-head">
+    <div>
+      <h2>What's on Tap</h2>
+      <div class="section-sub">Interactive applets</div>
+    </div>
+    <div class="beta" aria-hidden="true">
+      <span class="bracket-navy">[</span><span>beta</span><span class="bracket-orange">]</span>
+    </div>
+  </div>
+  <div class="grid cols-3">
     {{ range first 6 ( where .Site.RegularPages "Section" "apps" ) }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </li>
+      <div class="card">
+        <div class="row">
+          <h3>{{ .Title }}</h3>
+          <span class="badge badge-available">Available</span>
+        </div>
+        <p>{{ .Summary | default .Description }}</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="{{ .RelPermalink }}">View</a>
+        </div>
+      </div>
     {{ else }}
-      <li class="muted">No apps yet.</li>
+      <div class="card">
+        <h3>Coming Soon</h3>
+        <p>Interactive applets are being developed.</p>
+      </div>
     {{ end }}
-  </ul>
+  </div>
+</section>
+
+<section id="blogs" aria-label="Notes">
+  <div class="section-head">
+    <div>
+      <h2>Notes</h2>
+      <div class="section-sub">Recent posts</div>
+    </div>
+  </div>
+  <div class="grid">
+    {{ range first 3 ( where .Site.RegularPages "Section" "posts" ) }}
+      <div class="card">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
+        <p>{{ .Summary | default .Description }}</p>
+      </div>
+    {{ else }}
+      <div class="card">
+        <h3>Welcome</h3>
+        <p>Blog posts and notes will appear here.</p>
+      </div>
+    {{ end }}
+  </div>
 </section>
 {{ end }}
 

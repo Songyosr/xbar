@@ -11,7 +11,8 @@
     </header>
     <div class="content">
       {{ with .Params.app_url }}
-        {{< iframe src=. height=( or $.Params.height 640 ) >}}
+        {{ $height := or $.Params.height 640 }}
+        {{ printf `<div class="app-iframe-container"><iframe src="%s" width="100%%" height="%d" frameborder="0"></iframe></div>` . $height | safeHTML }}
       {{ else }}
         {{ .Content }}
       {{ end }}
