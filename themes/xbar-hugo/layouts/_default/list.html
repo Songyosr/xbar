@@ -1,47 +1,10 @@
-{{ define "title" }}{{ .Title }} — {{ .Site.Title }}{{ end }}
-
 {{ define "main" }}
-<section>
-  <div class="section-head">
-    <div>
-      <h1>{{ .Title }}</h1>
-      {{ if .Description }}
-      <div class="section-sub">{{ .Description }}</div>
-      {{ end }}
-    </div>
-  </div>
-  
-  {{ if .Content }}
-  <div class="content" style="margin-bottom: 2rem;">
-    {{ .Content }}
-  </div>
-  {{ end }}
-  
-  {{ if .Pages }}
-  <div class="grid cols-3">
+  <h1>{{ .Title }}</h1>
+  {{ with .Content }}<div class="content">{{ . }}</div>{{ end }}
+  <ul>
     {{ range .Pages }}
-    <div class="card">
-      <div class="row">
-        <h3><a href="{{ .Permalink }}" style="text-decoration: none; color: inherit;">{{ .Title }}</a></h3>
-      </div>
-      {{ if .Date }}
-      <div class="post-meta" style="margin-bottom: 0.5rem;">
-        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-          {{ .Date.Format "January 2, 2006" }}
-        </time>
-      </div>
-      {{ end }}
-      <p>{{ .Summary | truncate 120 }}</p>
-      <div class="actions">
-        <a class="btn btn-outline" href="{{ .Permalink }}">Read</a>
-      </div>
-    </div>
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}
-  </div>
-  {{ else }}
-  <p style="color: var(--info); text-align: center; margin: 3rem 0;">
-    No posts found in this section.
-  </p>
-  {{ end }}
-</section>
+  </ul>
 {{ end }}
+

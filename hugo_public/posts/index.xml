@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on XBAR</title>
+    <link>https://Songyosr.github.io/xbar/posts/</link>
+    <description>Recent content in Blog on XBAR</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://Songyosr.github.io/xbar/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome to XBAR</title>
+      <link>https://Songyosr.github.io/xbar/posts/welcome/</link>
+      <pubDate>Wed, 20 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://Songyosr.github.io/xbar/posts/welcome/</guid>
+      <description>A new Hugo/blogdown shell to host posts and embed applets.</description>
+    </item>
+  </channel>
+</rss>

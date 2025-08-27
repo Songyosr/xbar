@@ -1,10 +1,6 @@
-<footer>
-  <div class="row">
-    <p>{{ .Site.Params.footerText | default "average drinks, standard error" }}</p>
-    <div style="display:flex; gap:0.75rem;">
-      <a href="{{ "/" | relURL }}#blogs">Blogs</a>
-      <a href="{{ .Site.Params.github | default "#" }}" rel="noopener">GitHub</a>
-      <a href="{{ .Site.Params.contact | default "#contact" }}">Contact</a>
-    </div>
+<footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--info); font-size: 0.95rem;">
+  <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+    <p><span style="font-weight: 600; color: var(--ink);">average drinks</span>, <span style="font-weight: 700; color: var(--ink);">standard error</span></p>
   </div>
 </footer>
+

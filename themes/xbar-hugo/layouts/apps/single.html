@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <article class="app-embed">
+    <header class="app-header">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+        <a href="{{ "/" | relURL }}" class="logo" style="text-decoration: none; color: inherit; font-size: 1.8rem; font-weight: 800; line-height: 1; letter-spacing: -0.02em; white-space: nowrap; gap: 0;">
+          <span class="bracket-navy">[</span>
+          <span>x̄</span>
+          <span class="bracket-orange">]</span>
+        </a>
+        {{ with .Params.app_url }}
+          <div>
+            <a class="btn btn-outline" href="/apps/">← Back to Apps</a>
+            <a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">Open full screen</a>
+          </div>
+        {{ end }}
+      </div>
+      <h1>{{ .Title }}</h1>
+    </header>
+    <div class="content">
+      {{ .Content }}
+      {{ with .Params.app_url }}
+        {{ $height := or $.Params.height 640 }}
+        <div style="margin: 2rem 0;">
+          {{ printf `<div class="app-iframe-container"><iframe src="%s" width="100%%" height="%d" frameborder="0"></iframe></div>` . $height | safeHTML }}
+        </div>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}
+

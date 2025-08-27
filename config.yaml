@@ -1,0 +1,28 @@
+baseURL: "https://Songyosr.github.io/xbar"
+languageCode: en-us
+title: "XBAR"
+theme: "xbar-hugo"
+pagination:
+  pagerSize: 10
+publishDir: "hugo_public"
+
+menu:
+  main:
+    - name: "Blog"
+      url: "/posts/"
+      weight: 10
+    - name: "Apps"
+      url: "/apps/"
+      weight: 20
+
+params:
+  description: "Interactive statistics applets and notes."
+  tagline: "Interactive stats applets + notes"
+  social:
+    github: "https://github.com/Songyosr/xbar"
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
