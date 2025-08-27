@@ -2,37 +2,84 @@
 
 ## Project Structure & Module Organization
 
-- `public/`: Deployed static site and applets.
-  - `public/apps/central-limit-theorem/`: CLT applet.
-  - `public/shared/`: Shared JS/CSS (tokens, engine, utilities).
-- `xbar/`: React (CRA) shell used for building and hosting assets.
-- `themes/`: Site/theme assets.
-- `stat_app/`: Early prototypes (R/TSX).
-- `.github/workflows/deploy.yml`: GitHub Pages build/deploy.
-- `xbar_style_guide.md`: Visual/UX tokens and CSS guidance.
+### Main Site (Hugo/Blogdown)
+- `content/`: Markdown/R Markdown source files
+  - `content/_index.md`: Homepage content (dynamic)
+  - `content/posts/`: Blog posts (supports .Rmd)
+  - `content/apps/`: App description pages
+- `themes/xbar-hugo/`: Custom Hugo theme with XBAR design
+  - `layouts/`: Page templates (index, single, apps)
+  - `static/css/`: Theme CSS files
+  - `shortcodes/applet.html`: Flexible applet embedding
+- `hugo_public/`: Generated static site (Hugo output)
+- `config.yaml`: Hugo configuration
+
+### Legacy Assets
+- `public/`: Original static assets (legacy)
+- `xbar/`: React (CRA) shell (legacy development)
+- `stat_app/`: Early prototypes (R/TSX)
+
+### External Dependencies  
+- **xbar-apps repository**: Standalone interactive applets for iframe embedding
+- `.github/workflows/deploy.yml`: GitHub Pages build/deploy
+- `xbar_style_guide.md`: Visual/UX tokens and CSS guidance
 
 ## Build, Test, and Development Commands
 
-- `npm run dev`: Start CRA shell in `xbar/` for local development.
-- `npm run serve`: Serve `public/` at `http://localhost:8000` (static applets).
-- `npm run build`: Build CRA (`xbar/build`) and copy `public/` into the build.
-- `npm run deploy`: Publish `xbar/build` to GitHub Pages.
-- Tests: `cd xbar && npm test` (CRA + Testing Library).
+### Blogdown/Hugo Site (Main Development)
+- **R**: `blogdown::serve_site()` - Start local Hugo development server (recommended)
+- **Hugo**: `hugo server -D -F` - Alternative local development server
+- **Build**: `blogdown::build_site()` - Generate static site to `hugo_public/`
+- **Deploy**: GitHub Actions builds from `hugo_public/` to GitHub Pages
+
+### Legacy React Development (if needed)
+- `npm run dev`: Start CRA shell in `xbar/` for local development
+- `npm run build`: Build CRA (`xbar/build`)
+- Tests: `cd xbar && npm test` (CRA + Testing Library)
+
+### Standalone Applets (xbar-apps repository)
+- **Serve**: `python3 -m http.server 8080` in `xbar-apps/` for testing
+- **Deploy**: Separate GitHub Pages deployment from xbar-apps repository
 
 ## Coding Style & Naming Conventions
 
-- Formatting: Prettier (`.prettierrc`) + `.editorconfig` (2 spaces, LF, UTF‑8).
-- Linting: CRA ESLint in `xbar/` (extends `react-app` and `react-app/jest`).
-- JS/TS: camelCase variables; PascalCase React components; kebab-case files in `public/` when not React.
-- CSS: Prefer tokens and variables defined in `xbar_style_guide.md` and `public/shared/*.css`; avoid inline styles.
-- Paths/URLs: Keep applets under `public/apps/<applet-name>/`.
+### Blogdown/Hugo Content
+- **Markdown**: Use `.md` for static content, `.Rmd` for R code integration
+- **Frontmatter**: YAML format for metadata (title, summary, date, etc.)
+- **Naming**: kebab-case for file/folder names (`my-blog-post.Rmd`)
+- **Applet Embedding**: Use `{{< applet src="URL" >}}` shortcode for flexibility
+
+### Theme Development  
+- **CSS**: Prefer CSS variables defined in `themes/xbar-hugo/static/css/main.css`
+- **Templates**: Hugo template syntax, avoid inline styles where possible
+- **Responsive**: Mobile-first design with breakpoints
+
+### Legacy Code (when needed)
+- **Formatting**: Prettier (`.prettierrc`) + `.editorconfig` (2 spaces, LF, UTF‑8)
+- **JS/TS**: camelCase variables; PascalCase React components  
+- **Linting**: CRA ESLint in `xbar/` (extends `react-app` and `react-app/jest`)
+
+### External Applets
+- **Repository**: Separate `xbar-apps` repository for standalone applets
+- **URLs**: Deploy to `https://user.github.io/xbar-apps/apps/<applet-name>/`
 
 ## Testing Guidelines
 
-- Framework: React Testing Library + Jest via CRA (`xbar/`).
-- Location: Place tests next to source (e.g., `App.test.js`).
-- Scope: Add tests for new UI logic and utilities; keep existing tests passing.
-- Running: `cd xbar && npm test` (watch mode) or `CI=true npm test` for CI-like runs.
+### Blogdown/Hugo Testing
+- **Local Development**: Use `blogdown::serve_site()` for live preview
+- **Build Testing**: Run `blogdown::build_site()` to test static generation
+- **Content Validation**: Check Hugo templates render markdown correctly
+- **Applet Integration**: Test `{{< applet >}}` shortcode functionality
+
+### Legacy React Testing (if needed)
+- **Framework**: React Testing Library + Jest via CRA (`xbar/`)
+- **Location**: Place tests next to source (e.g., `App.test.js`)
+- **Running**: `cd xbar && npm test` (watch mode) or `CI=true npm test` for CI
+
+### Cross-Platform Testing
+- **Browsers**: Test iframe embedding across different browsers
+- **Mobile**: Ensure responsive design works on mobile devices
+- **R Markdown**: Verify R code execution and output rendering
 
 ## Commit & Pull Request Guidelines
 
