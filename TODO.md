@@ -4,40 +4,37 @@
 
 ## 🚀 Next Session Priorities
 
-### 1. Improve Banner Design for App and Blog Pages
-**Status:** Pending  
-**Current:** App pages have basic logo + buttons layout  
-**Goal:** Create consistent, polished banner design
+### 1. Homepage Design Decision
+**Status:** Ready for Review  
+**Options Created:** Three homepage versions available for testing
+- [x] Original design (current active)
+- [x] Hero + Card Grid layout (`index-hero.html`)
+- [x] Magazine/Editorial layout (`index-magazine.html`)  
+- [ ] **Decision needed:** Choose final homepage version to implement
+- [ ] Remove unused versions and clean up files
+
+### 2. Continue Banner Improvements for App and Blog Pages  
+**Status:** Pending
 - [ ] Refine spacing, typography, and visual hierarchy
-- [ ] Ensure mobile responsiveness  
-- [ ] Match XBAR brand aesthetic
+- [ ] Ensure mobile responsiveness
 - [ ] Test across different screen sizes
+- [ ] Apply consistent XBAR branding
 
 **Files to modify:**
 - `themes/xbar-hugo/layouts/apps/single.html`
 - `themes/xbar-hugo/static/css/main.css`
 
-### 2. Create Blog Post Template
-**Status:** Pending  
-**Current:** Blog posts use basic default template  
-**Goal:** Custom template with banner (logo left, nav right) + clean R Markdown layout
-- [ ] Design template: `layouts/_default/single.html` or `layouts/posts/single.html`
-- [ ] Banner: `[x̄]` logo (left) + navigation links (right)  
-- [ ] Content: Left-aligned title + clean R Markdown styling
-- [ ] Test with actual R Markdown posts containing code chunks
+### 3. Create Blog Post Template
+**Status:** Pending
+- [ ] Design custom template with banner layout  
+- [ ] Clean R Markdown styling for code chunks
+- [ ] Test with actual R Markdown posts
 
-### 3. Test R Markdown Functionality
-**Status:** Pending  
+### 4. Test R Markdown Functionality
+**Status:** Pending
 - [ ] Create sample `.Rmd` blog post with R code chunks
 - [ ] Verify code execution and output rendering
-- [ ] Test plots, tables, and statistical output
 - [ ] Ensure applet shortcode works in R Markdown
-
-### 4. Consider PR Integration
-**Status:** Pending  
-- [ ] Review and merge dynamic homepage PR into `exp/blogdown_migration`
-- [ ] Test merged functionality
-- [ ] Resolve any conflicts or integration issues
 
 ## 🔄 Current Project State
 

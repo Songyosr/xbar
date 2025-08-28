@@ -1,0 +1,471 @@
+/* Homepage Variants CSS - Extends main.css with enhanced layouts */
+
+/* =====================================
+   HERO ENHANCED VERSION STYLES 
+   ===================================== */
+
+/* Enhanced Hero Section */
+.hero-enhanced {
+  background: linear-gradient(135deg, var(--navy) 0%, #1e3a8a 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero-enhanced .hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.hero-enhanced .hero-description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0.95;
+  line-height: 1.7;
+}
+
+.hero-enhanced .code-accent {
+  margin: 2rem auto;
+  opacity: 0.8;
+}
+
+.btn-cta {
+  display: inline-block;
+  padding: 12px 32px;
+  background: var(--orange);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+
+.btn-cta:hover {
+  background: #e66a00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 125, 0, 0.3);
+}
+
+/* Featured App Section */
+.featured-app {
+  padding: 80px 0;
+  background: #f8fafc;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: var(--container-max);
+}
+
+.badge-featured {
+  display: inline-block;
+  padding: 6px 16px;
+  background: var(--orange);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.featured-info h2 {
+  font-size: 2.2rem;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.featured-info p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--info);
+  margin-bottom: 2rem;
+}
+
+.app-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.app-link:hover {
+  color: var(--orange);
+}
+
+.featured-preview {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Enhanced Grids */
+.apps-grid-enhanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.app-card-enhanced {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.app-card-enhanced:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  border-color: var(--orange);
+}
+
+.blog-grid-enhanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.blog-card-enhanced {
+  border-left: 4px solid var(--orange);
+  padding: 1.8rem;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.blog-card-enhanced:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.blog-date {
+  color: var(--info);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* =====================================
+   MAGAZINE VERSION STYLES 
+   ===================================== */
+
+/* Magazine Header */
+.magazine-header {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-bottom: 3px solid var(--navy);
+  background: white;
+}
+
+.magazine-logo {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.magazine-tagline {
+  color: var(--info);
+  font-size: 1.1rem;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Featured Layout */
+.magazine-featured {
+  padding: 60px 0;
+}
+
+.featured-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.main-feature .feature-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.2;
+  color: var(--navy);
+  margin: 2rem 0 1.5rem;
+  font-weight: 800;
+}
+
+.feature-meta {
+  color: var(--info);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.feature-meta .category {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.separator {
+  margin: 0 0.75rem;
+  opacity: 0.6;
+}
+
+.feature-excerpt {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.feature-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.75rem 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.feature-link:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* Magazine Sidebar */
+.magazine-sidebar {
+  border-left: 1px solid var(--border);
+  padding-left: 40px;
+}
+
+.sidebar-section {
+  margin-bottom: 3rem;
+}
+
+.sidebar-section h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid var(--orange);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-list li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-list a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: var(--navy);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.sidebar-list a:hover {
+  color: var(--orange);
+}
+
+.status {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  background: #e2e8f0;
+  color: var(--info);
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.status.available {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.views {
+  font-size: 0.8rem;
+  color: var(--info);
+  font-weight: 400;
+}
+
+/* Content Grid */
+.magazine-grid {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  background: #f8fafc;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.grid-item {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s;
+}
+
+.grid-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.item-placeholder {
+  display: inline-block;
+  background: var(--navy);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.item-category {
+  color: var(--orange);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.grid-item h4 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin: 0.75rem 0;
+  color: var(--navy);
+}
+
+.grid-item h4 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.grid-item h4 a:hover {
+  color: var(--orange);
+}
+
+.item-meta {
+  color: var(--info);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.item-excerpt {
+  color: var(--info);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.btn-sm {
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+}
+
+/* Code Footer */
+.code-footer {
+  padding: 40px 0;
+  background: var(--navy);
+  color: white;
+}
+
+.code-footer .code-accent {
+  text-align: center;
+  opacity: 0.8;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN 
+   ===================================== */
+
+@media (max-width: 768px) {
+  /* Hero Enhanced */
+  .hero-enhanced {
+    padding: 60px 0;
+  }
+  
+  .hero-enhanced .hero-title {
+    font-size: 2rem;
+  }
+  
+  /* Featured Grid */
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .featured-info h2 {
+    font-size: 1.8rem;
+  }
+  
+  /* Magazine Layout */
+  .featured-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .magazine-sidebar {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 40px;
+    margin-top: 40px;
+  }
+  
+  /* Grids */
+  .apps-grid-enhanced,
+  .blog-grid-enhanced,
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  /* Magazine Header */
+  .magazine-logo {
+    font-size: 2.5rem;
+  }
+}

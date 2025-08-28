@@ -1,0 +1,128 @@
+{{ define "main" }}
+<section class="hero" aria-label="Hero">
+  <h1><span class="bracket-navy">[</span>x̄<span class="bracket-orange">]</span> — where stat serves cool <span class="blink-text" style="color: var(--orange);">_</span></h1>
+  {{ with .Content }}
+    <div class="hero-content">
+      {{ . }}
+    </div>
+  {{ else }}
+    <p>
+     Stat applets to understand stats (me included) — built while procrastinating by an R user vibe-coding JS with AI, blood, and tears.
+    </p>
+  {{ end }}
+  <div class="code-accent" aria-hidden="true">
+    <pre>const x̄ = mean(sample) // average drinks, standard error</pre>
+  </div>
+</section>
+
+<section id="applets" aria-label="What's on Tap">
+  <div class="section-head">
+    <div>
+      <h2>What's on Tap</h2>
+      <div class="section-sub">Interactive applets</div>
+    </div>
+    <div class="beta" aria-hidden="true">
+      <span class="bracket-navy">[</span><span>beta</span><span class="bracket-orange">]</span>
+    </div>
+  </div>
+  <div class="grid cols-3">
+    {{ range first 6 ( where .Site.RegularPages "Section" "apps" ) }}
+      <div class="card">
+        <div class="row">
+          <h3>{{ .Title }}</h3>
+          <span class="badge badge-available">Available</span>
+        </div>
+        <p>{{ .Summary | default .Description }}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="{{ .RelPermalink }}">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
+      </div>
+    {{ else }}
+      <div class="card">
+        <div class="row">
+          <h3>CLT Lab</h3>
+          <span class="badge badge-available">Available</span>
+        </div>
+        <p>See sampling distributions build up, with smart parameter lines and SE overlays.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/apps/central-limit-theorem/">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Confidence Intervals</h3>
+          <span class="badge badge-coming">Coming soon</span>
+        </div>
+        <p>Simulate coverage, tweak n & σ, and watch intervals catch μ.</p>
+        <div class="actions">
+          <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>p‑values</h3>
+          <span class="badge badge-coming">Coming soon</span>
+        </div>
+        <p>Explore null distributions and error rates without the drama.</p>
+        <div class="actions">
+          <a class="btn btn-primary" aria-disabled="true" style="opacity:0.6; pointer-events:none;">Launch</a>
+          <a class="btn btn-outline" href="#blogs">Blog</a>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
+
+<section id="blogs" aria-label="Blogs">
+  <div class="section-head">
+    <div>
+      <h2>Blogs</h2>
+      <div class="section-sub">Notes from the bar</div>
+    </div>
+  </div>
+  <div class="grid cols-3">
+    {{ range first 3 ( where .Site.RegularPages "Section" "posts" ) }}
+      <div class="card">
+        <div class="row">
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        </div>
+        <p>{{ .Summary | default .Description }}</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="{{ .RelPermalink }}">Read</a>
+        </div>
+      </div>
+    {{ else }}
+      <div class="card">
+        <div class="row">
+          <h3>Why x̄</h3>
+        </div>
+        <p>A short on the name, teaching goals, and this tiny lab.</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="#">Read</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Design Notes</h3>
+        </div>
+        <p>Color, spacing, and motion choices for clarity and calm.</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="#">Read</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Embedding Guide</h3>
+        </div>
+        <p>Drop an applet into slides or Bookdown with no build steps.</p>
+        <div class="actions">
+          <a class="btn btn-outline" href="#">Read</a>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

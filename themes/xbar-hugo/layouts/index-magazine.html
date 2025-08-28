@@ -1,0 +1,202 @@
+{{ define "main" }}
+<!-- Magazine Header -->
+<header class="magazine-header">
+  <div class="container">
+    <div class="magazine-logo">
+      <span class="bracket-navy">[</span>x̄<span class="bracket-orange">]</span> XBAR
+    </div>
+    <p class="magazine-tagline">where stat serves cool</p>
+  </div>
+</header>
+
+<!-- Featured Content Section -->
+<section class="magazine-featured">
+  <div class="container">
+    <div class="featured-layout">
+      <!-- Main Feature -->
+      <article class="main-feature">
+        <div class="feature-preview">
+          <iframe src="https://songyosr.github.io/xbar-apps/apps/central-limit-theorem/" 
+                  width="100%" 
+                  height="400" 
+                  frameborder="0"
+                  loading="lazy">
+          </iframe>
+        </div>
+        
+        <h1 class="feature-title">The Central Limit Theorem Isn't Just Theory Anymore</h1>
+        
+        <div class="feature-meta">
+          <span class="category">Interactive Lab</span>
+          <span class="separator">•</span>
+          <span class="read-time">5 min explore</span>
+          <span class="separator">•</span>
+          <span class="author">By XBAR Team</span>
+        </div>
+        
+        <p class="feature-excerpt">
+          {{ with .Content }}{{ . | plainify }}{{ else }}Stop memorizing formulas and start understanding distributions. Our interactive CLT lab lets you watch sampling distributions emerge in real-time.{{ end }}
+        </p>
+        
+        <a href="/apps/central-limit-theorem/" class="feature-link">
+          Launch Lab →
+        </a>
+      </article>
+      
+      <!-- Sidebar -->
+      <aside class="magazine-sidebar">
+        <div class="sidebar-section">
+          <h3>What's on Tap</h3>
+          <ul class="sidebar-list">
+            {{ range where .Site.RegularPages "Section" "apps" }}
+            <li>
+              <a href="{{ .RelPermalink }}">
+                <span>{{ .Title }}</span>
+                <span class="status {{ if .Params.available }}available{{ end }}">
+                  {{ if .Params.available }}Live{{ else }}Soon{{ end }}
+                </span>
+              </a>
+            </li>
+            {{ else }}
+            <li>
+              <a href="/apps/central-limit-theorem/">
+                <span>CLT Lab</span>
+                <span class="status available">Live</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Confidence Intervals</span>
+                <span class="status">Soon</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>p‑values</span>
+                <span class="status">Soon</span>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        
+        <div class="sidebar-section">
+          <h3>Notes from the Bar</h3>
+          <ul class="sidebar-list">
+            {{ range first 5 (where .Site.RegularPages "Section" "posts") }}
+            <li>
+              <a href="{{ .RelPermalink }}">
+                <span>{{ .Title }}</span>
+                <span class="views">{{ .ReadingTime }}m</span>
+              </a>
+            </li>
+            {{ else }}
+            <li>
+              <a href="#">
+                <span>Why x̄</span>
+                <span class="views">3m</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Design Notes</span>
+                <span class="views">4m</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Embedding Guide</span>
+                <span class="views">5m</span>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Content Grid -->
+<section class="magazine-grid">
+  <div class="container">
+    <div class="content-grid">
+      {{ $posts := where .Site.RegularPages "Section" "posts" }}
+      {{ $apps := where .Site.RegularPages "Section" "apps" }}
+      {{ $combined := union $posts $apps }}
+      {{ range first 6 $combined }}
+      <article class="grid-item">
+        <div class="item-placeholder">[{{ .Section | title }}]</div>
+        
+        <div class="item-category">{{ .Section | title }}</div>
+        
+        <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+        
+        <div class="item-meta">
+          {{ if eq .Section "posts" }}
+            {{ .ReadingTime }} min read
+          {{ else }}
+            Interactive applet
+          {{ end }}
+        </div>
+        
+        <p class="item-excerpt">
+          {{ .Summary | default .Description | truncate 80 }}
+        </p>
+        
+        <div class="actions">
+          {{ if eq .Section "apps" }}
+            <a class="btn btn-primary btn-sm" href="{{ .RelPermalink }}">Launch</a>
+          {{ else }}
+            <a class="btn btn-outline btn-sm" href="{{ .RelPermalink }}">Read</a>
+          {{ end }}
+        </div>
+      </article>
+      {{ else }}
+      <!-- Fallback content -->
+      <article class="grid-item">
+        <div class="item-placeholder">[App]</div>
+        <div class="item-category">Apps</div>
+        <h4><a href="/apps/central-limit-theorem/">CLT Lab</a></h4>
+        <div class="item-meta">Interactive applet</div>
+        <p class="item-excerpt">See sampling distributions build up with smart parameter lines.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-sm" href="/apps/central-limit-theorem/">Launch</a>
+        </div>
+      </article>
+      
+      <article class="grid-item">
+        <div class="item-placeholder">[Blog]</div>
+        <div class="item-category">Posts</div>
+        <h4>Why x̄</h4>
+        <div class="item-meta">3 min read</div>
+        <p class="item-excerpt">A short on the name, teaching goals, and this tiny lab.</p>
+        <div class="actions">
+          <a class="btn btn-outline btn-sm" href="#">Read</a>
+        </div>
+      </article>
+      
+      <article class="grid-item">
+        <div class="item-placeholder">[App]</div>
+        <div class="item-category">Apps</div>
+        <h4>Confidence Intervals</h4>
+        <div class="item-meta">Interactive applet</div>
+        <p class="item-excerpt">Simulate coverage, tweak n & σ, and watch intervals catch μ.</p>
+        <div class="actions">
+          <a class="btn btn-primary btn-sm" aria-disabled="true" style="opacity:0.6;">Soon</a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- Code Accent Footer -->
+<section class="code-footer">
+  <div class="container">
+    <div class="code-accent" aria-hidden="true">
+      <pre>const x̄ = mean(sample) // average drinks, standard error</pre>
+    </div>
+  </div>
+</section>
+{{ end }}
